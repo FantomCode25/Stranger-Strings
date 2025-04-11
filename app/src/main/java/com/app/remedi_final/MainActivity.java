@@ -12,5 +12,6 @@ public class MainActivity extends Activity {
     }
     public void addReminder(View view) {
         Intent intent = new Intent(this, MainActivity2.class);
+        startActivity(intent);
     }
 }
