@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#BEE1ED"
+    tools:context=".SpeechToText">
+
+
+    <ImageButton
+        android:id="@+id/imgbtn"
+        android:layout_width="84dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginBottom="212dp"
+        android:src="@android:drawable/ic_btn_speak_now"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click to speak"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imgbtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.381"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="208dp"
+        android:layout_height="36dp"
+        android:text="Symptom Logging"
+        android:textSize="24dp"
+        android:textStyle="bold"
+
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="156dp" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="32dp"
+        android:layout_height="43dp"
+        app:srcCompat="@drawable/logo"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="9dp" />
+
+    <TextView
+        android:id="@+id/logoName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="17dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
