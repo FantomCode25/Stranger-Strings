@@ -1,108 +1,85 @@
 package com.app.remedi_final;
 
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
-import android.widget.ListView;
-import android.widget.ArrayAdapter;
-import androidx.appcompat.app.AppCompatActivity;
-import java.util.ArrayList;
-import java.util.Locale;
 
-public class MainActivity2 extends Activity {
+import java.util.HashMap;
 
-    private EditText medicationNameInput;
-    private EditText dosageInput;
-    private TimePicker timePicker;
-    private Button addButton;
-    private ListView medicationListView;
-    private ArrayList<Medication> medicationList;
-    private ArrayAdapter<Medication> adapter;
+public class MainActivity2 extends AppCompatActivity {
+
+    private EditText medNameEditText, doseEditText, timeEditText;
+    private Button submitButton;
+    private TextView storedMedicinesTextView;
+    private HashMap<String, MedicineDetails> medicineHashMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
-        initializeUIComponents();
-        medicationList = new ArrayList<>();
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, medicationList);
-        medicationListView.setAdapter(adapter);
-        addButton.setOnClickListener(new View.OnClickListener() {
+
+        medNameEditText = findViewById(R.id.medNameEditText);
+        doseEditText = findViewById(R.id.doseEditText);
+        timeEditText = findViewById(R.id.timeEditText);
+        submitButton = findViewById(R.id.submitButton);
+        storedMedicinesTextView = findViewById(R.id.storedMedicinesTextView);
+
+        medicineHashMap = new HashMap<>(); // Initialize the HashMap
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addMedicationToList();
+                String medName = medNameEditText.getText().toString().trim();
+                String dose = doseEditText.getText().toString().trim();
+                String time = timeEditText.getText().toString().trim();
 
+                if (!medName.isEmpty() && !dose.isEmpty() && !time.isEmpty()) {
+                    medicineHashMap.put(medName, new MedicineDetails(dose, time));
+                    updateDisplay();
+                    clearFields();
+                }
             }
         });
     }
-    private void initializeUIComponents() {
-        medicationNameInput = findViewById(R.id.medication_name_input);
-        dosageInput = findViewById(R.id.dosage_input);
-        timePicker = findViewById(R.id.time_picker);
-        addButton = findViewById(R.id.add_button);
-        medicationListView = findViewById(R.id.medication_list_view);
 
-        // Set 24-hour view for the time picker (optional)
-        timePicker.setIs24HourView(true);
+    private void updateDisplay() {
+        StringBuilder displayText = new StringBuilder();
+        for (String key : medicineHashMap.keySet()) {
+            MedicineDetails details = medicineHashMap.get(key);
+            displayText.append(key).append(": Dose - ")
+                    .append(details.getDose())
+                    .append(", Time - ")
+                    .append(details.getTime())
+                    .append("\n");
+        }
+        storedMedicinesTextView.setText(displayText.toString());
     }
-    private void addMedicationToList() {
-        // Get user input values
-        String medicationName = medicationNameInput.getText().toString().trim();
-        String dosageText = dosageInput.getText().toString().trim();
 
-        // Validate input
-        if (medicationName.isEmpty() || dosageText.isEmpty()) {
-            Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        double dosage;
-        try {
-            dosage = Double.parseDouble(dosageText);
-        } catch (NumberFormatException e) {
-            Toast.makeText(this, "Please enter a valid dosage", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        int hour, minute;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            hour = timePicker.getHour();
-            minute = timePicker.getMinute();
-        } else {
-            // For older Android versions
-            hour = timePicker.getCurrentHour();
-            minute = timePicker.getCurrentMinute();
+    private void clearFields() {
+        medNameEditText.setText("");
+        doseEditText.setText("");
+        timeEditText.setText("");
+    }
+
+    static class MedicineDetails {
+        private String dose;
+        private String time;
+
+        public MedicineDetails(String dose, String time) {
+            this.dose = dose;
+            this.time = time;
         }
 
-        // Create a new Medication object
-        Medication newMedication = new Medication(medicationName, dosage, hour, minute);
+        public String getDose() {
+            return dose;
+        }
 
-        // Add to list and update the view
-        medicationList.add(newMedication);
-        adapter.notifyDataSetChanged();
-
-        // Clear input fields
-        clearInputFields();
-
-        // Show confirmation message
-        Toast.makeText(this, "Medication added successfully", Toast.LENGTH_SHORT).show();
-    }
-    private void clearInputFields() {
-        medicationNameInput.setText("");
-        dosageInput.setText("");
-        // Reset focus to medication name field
-        medicationNameInput.requestFocus();
-    }
-    private void clearInputFields() {
-        medicationNameInput.setText("");
-        dosageInput.setText("");
-        // Reset focus to medication name field
-        medicationNameInput.requestFocus();
-    }
-
+        public String getTime() {
+            return time;
+        }
     }
 }
-
