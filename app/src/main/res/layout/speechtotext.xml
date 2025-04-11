@@ -13,11 +13,13 @@
         android:id="@+id/imgbtn"
         android:layout_width="84dp"
         android:layout_height="100dp"
+        android:layout_marginEnd="188dp"
+        android:layout_marginBottom="212dp"
         android:src="@android:drawable/ic_btn_speak_now"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView"
@@ -28,20 +30,21 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/imgbtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.381"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.91" />
+        app:layout_constraintVertical_bias="0.8" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="212dp"
-        android:layout_height="57dp"
+        android:layout_width="208dp"
+        android:layout_height="36dp"
         android:text="Symptom Logging"
-        android:textSize="20dp"
+        android:textSize="24dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="73dp" />
+
+        tools:layout_editor_absoluteX="52dp"
+        tools:layout_editor_absoluteY="156dp" />
 
     <ImageView
         android:id="@+id/imageView"
