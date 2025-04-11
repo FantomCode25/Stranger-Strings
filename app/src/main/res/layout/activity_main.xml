@@ -42,14 +42,14 @@
         android:layout_width="155dp"
         android:layout_height="25dp"
         android:text="Add reminder"
-        android:textSize="20dp"
         android:textColor="#441E4B"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintHorizontal_bias="0.445"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242" />
+        app:layout_constraintVertical_bias="0.25" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -64,20 +64,6 @@
         android:src="@drawable/logo" />
 
     <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="57dp"
-        android:layout_height="52dp"
-        android:onClick="addReminder"
-        android:src="@drawable/add_reminder"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.234"
-        android:backgroundTint="#441E4B" />
-
-    <ImageView
         android:id="@+id/trigger_checkbox1"
         android:layout_width="43dp"
         android:layout_height="32dp"
@@ -89,4 +75,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.36" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="142dp"
+        android:layout_height="107dp"
+        android:src="@drawable/addrem"
+        android:onClick="addReminder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.232" />
 </androidx.constraintlayout.widget.ConstraintLayout>
