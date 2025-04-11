@@ -28,12 +28,14 @@ public class SpeechToText extends AppCompatActivity {
     private static final int REQUEST_CODE_INPUT = 1;
     private static final int PERMISSION_REQUEST_CODE = 100;
     String app_name="ReMedi";
+    private ArrayList<String> symptomsArray = new ArrayList<>();
+    private TextView symptomsTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.SpeechToText);
+        setContentView(R.layout.speechtotext);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -42,6 +44,7 @@ public class SpeechToText extends AppCompatActivity {
 
         btn = findViewById(R.id.imgbtn);
         textView = findViewById(R.id.textView);
+        symptomsTextView = findViewById(R.id.symptoms_textview);
 
 
         btn.setOnClickListener(new View.OnClickListener() {
