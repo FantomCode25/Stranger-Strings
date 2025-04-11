@@ -38,29 +38,37 @@
         android:id="@+id/imageView3"
         android:layout_width="153dp"
         android:layout_height="143dp"
+        android:onClick="reminderPage"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.154"
-        app:srcCompat="@drawable/reminders" />
+        android:src="@drawable/reminders" />
 
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="153dp"
         android:layout_height="138dp"
-        app:srcCompat="@drawable/inventory"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="296dp" />
+        android:onClick="inventoryPage"
+        android:src="@drawable/inventory"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="155dp"
         android:layout_height="139dp"
-        app:srcCompat="@drawable/symptoms"
-        android:onClick="symptomLog"
-        tools:layout_editor_absoluteX="128dp"
-        tools:layout_editor_absoluteY="497dp" />
+        android:onClick="symptomPage"
+        android:src="@drawable/symptoms"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.839" />
 
     <TextView
         android:id="@+id/textView4"
@@ -70,8 +78,12 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="156dp"
-        tools:layout_editor_absoluteY="234dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.342" />
 
     <TextView
         android:id="@+id/textView5"
@@ -81,8 +93,12 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="162dp"
-        tools:layout_editor_absoluteY="434dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.616" />
 
     <TextView
         android:id="@+id/textView6"
@@ -92,8 +108,12 @@
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="636dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.903" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

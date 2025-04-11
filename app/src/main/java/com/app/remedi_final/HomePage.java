@@ -11,8 +11,16 @@ public class HomePage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
     }
-    public void symptomLog() {
-        Intent intent = new Intent (this, SpeechToText.class);
-        startActivity(intent);
+    public void reminderPage(View v) {
+        Intent intent1 = new Intent (this, MainActivity.class);
+        startActivity(intent1);
+    }
+    public void inventoryPage(View vi) {
+        Intent intent2 = new Intent (this, Inventory.class);
+        startActivity(intent2);
+    }
+    public void symptomPage(View vie) {
+        Intent intent3 = new Intent (this, SpeechToText.class);
+        startActivity(intent3);
     }
 }

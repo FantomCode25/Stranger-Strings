@@ -43,6 +43,7 @@
         android:layout_height="25dp"
         android:text="Add reminder"
         android:textSize="20dp"
+        android:textColor="#441E4B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.375"
@@ -74,14 +75,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.234"
-        app:tint="#441E4B" />
+        android:backgroundTint="#441E4B" />
 
     <ImageView
         android:id="@+id/trigger_checkbox1"
         android:layout_width="43dp"
         android:layout_height="32dp"
-        android:src="@drawable/baseline_check_box_outline_blank_24"
         android:checked="false"
-        tools:layout_editor_absoluteX="282dp"
-        tools:layout_editor_absoluteY="264dp" />
+        android:src="@drawable/baseline_check_box_outline_blank_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.896"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.36" />
 </androidx.constraintlayout.widget.ConstraintLayout>
