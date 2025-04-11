@@ -1,10 +1,12 @@
 package com.app.remedi_final;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import androidx.activity.ComponentActivity;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,7 +29,7 @@ public class SpeechToText extends AppCompatActivity {
     private TextView textView;
     private static final int REQUEST_CODE_INPUT = 1;
     private static final int PERMISSION_REQUEST_CODE = 100;
-    String app_name="ReMedi";
+    String app_name = "ReMedi";
     private ArrayList<String> symptomsArray = new ArrayList<>();
     private TextView symptomsTextView;
 
@@ -46,7 +48,7 @@ public class SpeechToText extends AppCompatActivity {
         textView = findViewById(R.id.textView);
         symptomsTextView = findViewById(R.id.symptoms_textview);
 
-
+        updateSymptomsDisplay();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +62,18 @@ public class SpeechToText extends AppCompatActivity {
                 startSpeechRecognition();
             }
         });
+    }
+
+
+    private void updateSymptomsDisplay() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Symptoms:\n");
+
+        for (int i = 0; i < symptomsArray.size(); i++) {
+            sb.append(i + 1).append(". ").append(symptomsArray.get(i)).append("\n");
+        }
+
+        symptomsTextView.setText(sb.toString());
     }
 
     private void startSpeechRecognition() {
@@ -77,19 +91,19 @@ public class SpeechToText extends AppCompatActivity {
     }
 
 
-@Override
-public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-    super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-    if (requestCode == PERMISSION_REQUEST_CODE) {
-        if (grantResults.length > 0 && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED) {
-            // Permission granted, proceed with speech recognition
-            startSpeechRecognition();
-        } else {
-            // Permission denied
-            Toast.makeText(this, "Microphone permission is required for speech recognition", Toast.LENGTH_LONG).show();
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == android.content.pm.PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, proceed with speech recognition
+                startSpeechRecognition();
+            } else {
+                // Permission denied
+                Toast.makeText(this, "Microphone permission is required for speech recognition", Toast.LENGTH_LONG).show();
+            }
         }
     }
-}
 
 
     @Override
@@ -99,7 +113,14 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
             if (resultCode == RESULT_OK && data != null) {
                 ArrayList<String> arrayList = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                 if (arrayList != null && !arrayList.isEmpty()) {
-                    textView.setText(arrayList.get(0));
+                    String recognizedText = arrayList.get(0);
+                    textView.setText(recognizedText);
+
+                    // Add the recognized text to our symptoms array
+                    symptomsArray.add(recognizedText);
+
+                    // Update the symptoms display
+                    updateSymptomsDisplay();
                 }
             }
         }

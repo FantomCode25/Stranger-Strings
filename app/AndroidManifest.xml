@@ -30,7 +30,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.SpeechToText" >
         <activity
-            android:name="com.example.speechtotext.MainActivity"
+            android:name="com.example.speechtotext.SpeechToText"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
