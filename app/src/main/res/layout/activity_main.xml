@@ -77,10 +77,11 @@
         app:tint="#441E4B" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/trigger_checkbox1"
         android:layout_width="43dp"
         android:layout_height="32dp"
         android:src="@drawable/baseline_check_box_outline_blank_24"
+        android:checked="false"
         tools:layout_editor_absoluteX="282dp"
         tools:layout_editor_absoluteY="264dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
