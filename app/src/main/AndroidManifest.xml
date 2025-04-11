@@ -16,13 +16,6 @@
             android:name=".MainActivity3"
             android:exported="false" />
         <activity
-            android:name=".MainActivity3"
-            android:exported="false" />
-        <activity
-            android:name=".HomePage"
-            android:exported="false"
-            android:theme="@style/Theme.ReMedi_final" />
-        <activity
             android:name=".MainActivity2"
             android:exported="false" />
         <activity
