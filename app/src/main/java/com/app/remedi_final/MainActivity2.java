@@ -2,6 +2,9 @@ package com.app.remedi_final;
 
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +20,7 @@ public class MainActivity2 extends AppCompatActivity {
     private TextView storedMedicinesTextView;
     private HashMap<String, MedicineDetails> medicineHashMap;
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

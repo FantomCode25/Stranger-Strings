@@ -1,5 +1,6 @@
 package com.app.remedi_final;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ public class MainActivity extends Activity {
     private static final int REQUEST_CODE = 1;
     private LinearLayout medicationsLayout;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,9 +25,10 @@ public class MainActivity extends Activity {
         medicationsLayout = findViewById(R.id.medicationsLayout); // Ensure to add LinearLayout in your XML
     }
 
-    public void addReminder(View view) {
-        Intent intent = new Intent(this, MainActivity2.class);
-        startActivityForResult(intent, REQUEST_CODE);
+    public void addReminder(View v1) {
+        Intent intent5 = new Intent(this, MainActivity2.class);
+        startActivityForResult(intent5, REQUEST_CODE);
+        startActivity(intent5);
     }
 
     @Override
