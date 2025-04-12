@@ -39,13 +39,13 @@
             android:exported="false" />
         <activity
             android:name=".Checkbox"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
-            android:exported="true" />
+            android:exported="false" />
         <activity
             android:name=".SpeechToText"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

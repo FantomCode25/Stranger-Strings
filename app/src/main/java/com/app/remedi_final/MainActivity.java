@@ -3,73 +3,61 @@ package com.app.remedi_final;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.LinearLayout;
 
+import androidx.annotation.Nullable;
+
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.HashMap;
+import java.util.HashMap;
+
 
 public class MainActivity extends Activity {
 
     private static final int REQUEST_CODE = 1;
-    private LinearLayout medicationsLayout;
+    private Button addReminderBtn;
+    private LinearLayout medsContainer;
 
-    @SuppressLint("MissingInflatedId")
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        addReminderBtn = findViewById(R.id.addReminderBtn);
+        medsContainer = findViewById(R.id.medsContainer);
 
-        medicationsLayout = findViewById(R.id.medicationsLayout); // Ensure to add LinearLayout in your XML
+        addReminderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, MainActivity2.class);
+                startActivityForResult(i, REQUEST_CODE);
+            }
+        });
+
     }
 
-    public void addReminder(View v1) {
-        Intent intent5 = new Intent(this, MainActivity2.class);
-        startActivityForResult(intent5, REQUEST_CODE);
-        startActivity(intent5);
-    }
+
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode,@Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
-            HashMap<String, MedicineDetails> medications = (HashMap<String, MedicineDetails>) data.getSerializableExtra("medications");
-            displayMedications(medications);
-        }
-    }
+        if (requestCode == REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            String medName = data.getStringExtra("medName");
+            String dose = data.getStringExtra("dose");
+            String time = data.getStringExtra("time");
 
-    private void displayMedications(HashMap<String, MedicineDetails> medications) {
-        medicationsLayout.removeAllViews(); // Clear previous checkboxes
-
-        for (String medName : medications.keySet()) {
-            MedicineDetails details = medications.get(medName);
-            String dosage = details.getDose();
-            String time = details.getTime();
 
             CheckBox checkBox = new CheckBox(this);
-            checkBox.setText(medName + ": Dose - " + dosage + ", Time - " + time);
-            medicationsLayout.addView(checkBox); // Add the checkbox to the layout
-        }
-    }
-
-    // Ensure MedicineDetails class can be serialized
-    static class MedicineDetails implements Serializable {
-        private String dose;
-        private String time;
-
-        public MedicineDetails(String dose, String time) {
-            this.dose = dose;
-            this.time = time;
-        }
-
-        public String getDose() {
-            return dose;
-        }
-
-        public String getTime() {
-            return time;
+            checkBox.setText("Medicine: " + medName + " | Dose: " + dose + " | Time: " + time);
+            checkBox.setTextColor(Color.BLACK);
+            checkBox.setTextSize(16);
+            medsContainer.addView(checkBox);
         }
     }
 }

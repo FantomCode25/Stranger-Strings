@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,10 +18,9 @@ public class MainActivity2 extends AppCompatActivity {
 
     private EditText medNameEditText, doseEditText, timeEditText;
     private Button submitButton;
-    private TextView storedMedicinesTextView;
-    private HashMap<String, MedicineDetails> medicineHashMap;
 
-    @SuppressLint("WrongViewCast")
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,9 +30,7 @@ public class MainActivity2 extends AppCompatActivity {
         doseEditText = findViewById(R.id.doseEditText);
         timeEditText = findViewById(R.id.timeEditText);
         submitButton = findViewById(R.id.submitButton);
-        storedMedicinesTextView = findViewById(R.id.storedMedicinesTextView);
 
-        medicineHashMap = new HashMap<>(); // Initialize the HashMap
 
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,48 +40,14 @@ public class MainActivity2 extends AppCompatActivity {
                 String time = timeEditText.getText().toString().trim();
 
                 if (!medName.isEmpty() && !dose.isEmpty() && !time.isEmpty()) {
-                    medicineHashMap.put(medName, new MedicineDetails(dose, time));
-                    updateDisplay();
-                    clearFields();
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("medName", medName);
+                    resultIntent.putExtra("dose", dose);
+                    resultIntent.putExtra("time", time);
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
                 }
             }
         });
-    }
-
-    private void updateDisplay() {
-        StringBuilder displayText = new StringBuilder();
-        for (String key : medicineHashMap.keySet()) {
-            MedicineDetails details = medicineHashMap.get(key);
-            displayText.append(key).append(": Dose - ")
-                    .append(details.getDose())
-                    .append(", Time - ")
-                    .append(details.getTime())
-                    .append("\n");
-        }
-        storedMedicinesTextView.setText(displayText.toString());
-    }
-
-    private void clearFields() {
-        medNameEditText.setText("");
-        doseEditText.setText("");
-        timeEditText.setText("");
-    }
-
-    static class MedicineDetails {
-        private String dose;
-        private String time;
-
-        public MedicineDetails(String dose, String time) {
-            this.dose = dose;
-            this.time = time;
-        }
-
-        public String getDose() {
-            return dose;
-        }
-
-        public String getTime() {
-            return time;
-        }
     }
 }

@@ -1,4 +1,4 @@
-package com.app.remedi_final;
+/*package com.app.remedi_final;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
@@ -55,3 +55,4 @@ public class Checkbox extends AppCompatActivity {
         }
     }
 }
+*/
