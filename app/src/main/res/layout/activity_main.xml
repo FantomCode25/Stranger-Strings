@@ -5,13 +5,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp"
-    android:background="#ffffff">
+    android:background="#BEE1ED">
 
     <Button
         android:id="@+id/addReminderBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Reminder"
+        android:textColor="@color/white"
+        android:backgroundTint="#441E4B"
         android:layout_gravity="center_horizontal"
         android:padding="10dp" />
 
